@@ -57,8 +57,22 @@ pub async fn submit_answer(year: u16, day: u8, level: &str, answer: &str) -> Str
     resp[start_idx..end_idx].trim().to_owned()
 }
 
-static CORRECT_ANSWERS: LazyLock<HashMap<(u8, u8), u64>> =
-    LazyLock::new(|| [((1, 1), 964), ((1, 2), 5872)].into_iter().collect());
+static CORRECT_ANSWERS: LazyLock<HashMap<(u8, u8), u64>> = LazyLock::new(|| {
+    [
+        ((1, 1), 964),
+        ((1, 2), 5872),
+        ((2, 1), 54641809925),
+        ((2, 2), 73694270688),
+        ((3, 1), 17766),
+        ((3, 2), 176582889354075),
+        ((4, 1), 1523),
+        ((4, 2), 9290),
+        ((5, 1), 611),
+        ((5, 2), 345995423801866),
+    ]
+    .into_iter()
+    .collect()
+});
 
 static CORRECT_STR_ANSWERS: LazyLock<HashMap<(u8, u8), &str>> =
     LazyLock::new(|| [].into_iter().collect());

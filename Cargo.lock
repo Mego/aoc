@@ -115,6 +115,7 @@ dependencies = [
  "divisors_fixed",
  "exhaust",
  "fancy-regex",
+ "grid",
  "itertools 0.14.0",
  "md5",
  "paste",

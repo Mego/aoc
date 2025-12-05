@@ -136,18 +136,35 @@ pub fn adj_squares<T: Sized>(grid: &Grid<T>, cur: (usize, usize)) -> Vec<(usize,
         .collect_vec()
 }
 
-pub struct Neighborhood {
-    pub up: Option<u8>,
-    pub up_right: Option<u8>,
-    pub right: Option<u8>,
-    pub down_right: Option<u8>,
-    pub down: Option<u8>,
-    pub down_left: Option<u8>,
-    pub left: Option<u8>,
-    pub up_left: Option<u8>,
+pub struct Neighborhood<T> {
+    pub up: Option<T>,
+    pub up_right: Option<T>,
+    pub right: Option<T>,
+    pub down_right: Option<T>,
+    pub down: Option<T>,
+    pub down_left: Option<T>,
+    pub left: Option<T>,
+    pub up_left: Option<T>,
 }
 
-pub fn adj_squares8(grid: &Grid<u8>, cur: (usize, usize)) -> Neighborhood {
+impl<T: Copy> Neighborhood<T> {
+    pub fn iter(&self) -> impl Iterator<Item = T> {
+        [
+            self.up,
+            self.up_right,
+            self.right,
+            self.down_right,
+            self.down,
+            self.down_left,
+            self.left,
+            self.up_left,
+        ]
+        .into_iter()
+        .flatten()
+    }
+}
+
+pub fn adj_squares8<T: Copy>(grid: &Grid<T>, cur: (usize, usize)) -> Neighborhood<T> {
     Neighborhood {
         up: {
             let pos = add_delta(cur, EIGHT_DELTAS[0]);
