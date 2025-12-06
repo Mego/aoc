@@ -69,6 +69,8 @@ static CORRECT_ANSWERS: LazyLock<HashMap<(u8, u8), u64>> = LazyLock::new(|| {
         ((4, 2), 9290),
         ((5, 1), 611),
         ((5, 2), 345995423801866),
+        ((6, 1), 4693419406682),
+        ((6, 2), 9029931401920),
     ]
     .into_iter()
     .collect()
