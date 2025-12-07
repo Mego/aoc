@@ -6,19 +6,19 @@ use super::coordinate::{Coordinate, CoordinateOffset};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Exhaust)]
 pub enum Direction {
-    UP,
-    LEFT,
-    DOWN,
-    RIGHT,
+    Up,
+    Left,
+    Down,
+    Right,
 }
 
 impl Direction {
-    pub fn to_delta(&self) -> CoordinateOffset {
+    pub fn as_delta(&self) -> CoordinateOffset {
         match self {
-            Self::LEFT => (0, -1),
-            Self::RIGHT => (0, 1),
-            Self::UP => (-1, 0),
-            Self::DOWN => (1, 0),
+            Self::Left => (0, -1),
+            Self::Right => (0, 1),
+            Self::Up => (-1, 0),
+            Self::Down => (1, 0),
         }
         .into()
     }
@@ -31,65 +31,65 @@ impl Direction {
             b
         );
         match (a.x.cmp(&b.x), a.y.cmp(&b.y)) {
-            (_, Ordering::Less) => Self::RIGHT,
-            (_, Ordering::Greater) => Self::LEFT,
-            (Ordering::Less, _) => Self::DOWN,
-            (Ordering::Greater, _) => Self::UP,
+            (_, Ordering::Less) => Self::Right,
+            (_, Ordering::Greater) => Self::Left,
+            (Ordering::Less, _) => Self::Down,
+            (Ordering::Greater, _) => Self::Up,
             _ => unreachable!(),
         }
     }
 
     pub fn from_char(c: u8) -> Self {
         match c {
-            b'<' => Self::LEFT,
-            b'>' => Self::RIGHT,
-            b'^' => Self::UP,
-            b'v' => Self::DOWN,
+            b'<' => Self::Left,
+            b'>' => Self::Right,
+            b'^' => Self::Up,
+            b'v' => Self::Down,
             _ => unreachable!(),
         }
     }
 
-    pub fn to_char(&self) -> u8 {
+    pub fn as_char(&self) -> u8 {
         match self {
-            Self::LEFT => b'<',
-            Self::RIGHT => b'>',
-            Self::UP => b'^',
-            Self::DOWN => b'v',
+            Self::Left => b'<',
+            Self::Right => b'>',
+            Self::Up => b'^',
+            Self::Down => b'v',
         }
     }
 
     pub fn opposite(&self) -> Self {
         match self {
-            Self::DOWN => Self::UP,
-            Self::LEFT => Self::RIGHT,
-            Self::UP => Self::DOWN,
-            Self::RIGHT => Self::LEFT,
+            Self::Down => Self::Up,
+            Self::Left => Self::Right,
+            Self::Up => Self::Down,
+            Self::Right => Self::Left,
         }
     }
 
     pub fn cw(&self) -> Self {
         match self {
-            Self::DOWN => Self::LEFT,
-            Self::LEFT => Self::UP,
-            Self::UP => Self::RIGHT,
-            Self::RIGHT => Self::DOWN,
+            Self::Down => Self::Left,
+            Self::Left => Self::Up,
+            Self::Up => Self::Right,
+            Self::Right => Self::Down,
         }
     }
 
     pub fn cw_turns(&self, other: Self) -> usize {
         (0..4)
-            .find_map(|n| {
+            .find(|&n| {
                 let mut dir = *self;
                 for _ in 0..n {
                     dir = dir.cw();
                 }
-                (dir == other).then_some(n)
+                dir == other
             })
             .unwrap()
     }
 
     pub fn move_dir(&self, pos: Coordinate) -> CoordinateOffset {
-        let d = self.to_delta();
+        let d = self.as_delta();
         (pos.x as isize + d.x, pos.y as isize + d.y).into()
     }
 }
@@ -100,10 +100,10 @@ impl Display for Direction {
             f,
             "{}",
             match self {
-                Self::DOWN => "v",
-                Self::LEFT => "<",
-                Self::RIGHT => ">",
-                Self::UP => "^",
+                Self::Down => "v",
+                Self::Left => "<",
+                Self::Right => ">",
+                Self::Up => "^",
             }
         )
     }
