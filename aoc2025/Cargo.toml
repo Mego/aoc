@@ -23,6 +23,7 @@ tokio = { workspace = true }
 grid = { version = "1.0.0", features = ["serde"] }
 pathfinding = "4.14.0"
 parking_lot = "0.12.5"
+petgraph = "0.8.3"
 
 [[bench]]
 name = "benches"

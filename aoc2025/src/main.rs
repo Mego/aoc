@@ -43,7 +43,7 @@ const fn day_part_fn(day: u8, level: u8) -> impl Fn(&str) -> String {
 }
 
 const YEAR: u16 = 2025;
-const DAY: u8 = 7;
+const DAY: u8 = 8;
 const LEVEL: u8 = 2;
 
 #[tokio::main]
