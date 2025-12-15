@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-tokio = { workspace = true , default-features = true }
+tokio = { workspace = true, default-features = true }
 paste = "1.0.15"
 util = { path = "../util" }
-clap = { features = ["derive"] , workspace = true, default-features = true }
+clap = { features = ["derive"], workspace = true, default-features = true }
 
 aoc2015 = { path = "../aoc2015" }
 
@@ -16,3 +16,11 @@ aoc2016 = { path = "../aoc2016" }
 aoc2024 = { path = "../aoc2024" }
 
 aoc2025 = { path = "../aoc2025" }
+
+[[bench]]
+name = "benches"
+harness = false
+
+[dev-dependencies]
+criterion = { version = "0.8.1", features = ["html_reports"] }
+paste = "1.0.15"

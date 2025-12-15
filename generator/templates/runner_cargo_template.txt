@@ -11,3 +11,10 @@ clap = { version = "4.5.53", features = ["derive"] }
 {% for year in years %}
 aoc{{ year }} = { path = "../aoc{{ year }}" }
 {% endfor %}
+
+[[bench]]
+name = "benches"
+harness = false
+
+[dev-dependencies]
+criterion = { version = "0.8.1", features = ["html_reports"] }
