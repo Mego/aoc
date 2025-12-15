@@ -12,8 +12,8 @@ mod test {
     use std::{fs, sync::LazyLock};
     use util::check;
 
-    const YEAR: u16 = {{ year }};
-    const DAY: u8 = {{ day }};
+    const YEAR: u16 = 2016;
+    const DAY: u8 = 13;
     static INPUT: LazyLock<String> =
         LazyLock::new(|| fs::read_to_string(util::input_path(YEAR, DAY)).unwrap());
 

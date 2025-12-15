@@ -14,9 +14,7 @@ const NO_COOKIE_ERROR: &str =
     "Puzzle inputs differ by user.  Please log in to get your puzzle input.";
 
 pub async fn fetch_input(year: u16, day: u8) -> String {
-    let fname = Path::new("inputs")
-        .join(format!("{year}"))
-        .join(format!("day{day}.txt"));
+    let fname = input_path(year, day);
     fs::create_dir_all(fname.parent().unwrap()).unwrap();
     if let Ok(contents) = read_to_string(&fname) {
         return contents;
@@ -30,8 +28,10 @@ pub async fn fetch_input(year: u16, day: u8) -> String {
         .unwrap()
         .text()
         .await
-        .unwrap();
-    if data.trim() == NO_COOKIE_ERROR {
+        .unwrap()
+        .trim()
+        .to_string();
+    if data == NO_COOKIE_ERROR {
         panic!(
             "you need to set your cookie correctly in cookie.txt (including the `session=` part at the start)"
         );
@@ -95,8 +95,20 @@ pub fn check(year: u16, day: u8, level: u8, answer: &str) -> Option<bool> {
     }
 }
 
+pub fn input_path(year: u16, day: u8) -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .unwrap()
+        .join("inputs")
+        .join(format!("{year}"))
+        .join(format!("day{day}.txt"))
+}
+
 pub fn solution_path(year: u16, day: u8, level: u8) -> PathBuf {
-    Path::new("solutions")
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .unwrap()
+        .join("solutions")
         .join(format!("{year}"))
         .join(format!("day{day}"))
         .join(format!("level{level}.txt"))
