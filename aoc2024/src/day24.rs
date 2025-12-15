@@ -179,7 +179,6 @@ mod test {
         LazyLock::new(|| fs::read_to_string(util::input_path(YEAR, DAY)).unwrap());
 
     #[test]
-    // #[ignore = "still debugging this one"]
     fn test_part1() {
         assert!(check(YEAR, DAY, 1, &part1(&INPUT).to_string()).unwrap());
     }
