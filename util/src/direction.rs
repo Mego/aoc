@@ -1,6 +1,9 @@
 use std::{cmp::Ordering, fmt::Display};
 
 use exhaust::Exhaust;
+use grid::Grid;
+
+use crate::gridtools::IsValidIndex;
 
 use super::coordinate::{Coordinate, CoordinateOffset};
 
@@ -91,6 +94,15 @@ impl Direction {
     pub fn move_dir(&self, pos: Coordinate) -> CoordinateOffset {
         let d = self.to_delta();
         (pos.x as isize + d.x, pos.y as isize + d.y).into()
+    }
+
+    pub fn try_move_dir_on_grid<T>(&self, pos: Coordinate, g: &Grid<T>) -> Option<Coordinate> {
+        let next_pos = self.move_dir(pos);
+        if g.is_valid_index(next_pos) {
+            Some(next_pos.into())
+        } else {
+            None
+        }
     }
 }
 
