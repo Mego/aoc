@@ -8,7 +8,7 @@ exhaust = { workspace = true, default-features = true }
 grid = { workspace = true, default-features = true }
 itertools = { workspace = true, default-features = true }
 rayon = { workspace = true, default-features = true }
-reqwest = "0.12.24"
+reqwest = { workspace = true, default-features = true }
 rustc-hash = { workspace = true, default-features = true }
 strip-tags = "0.1.0"
 tokio = { workspace = true, default-features = true }

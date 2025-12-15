@@ -6,7 +6,8 @@ edition = "2024"
 [dependencies]
 anyhow = "1.0.100"
 clap = { workspace = true, default-features = true, features = ["derive"] }
-reqwest = "0.12.26"
+reqwest = { workspace = true, default-features = true }
 scraper = "0.25.0"
 tokio.workspace = true
+tokio.default-features = true
 util = { path = "../util" }
