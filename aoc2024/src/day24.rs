@@ -118,7 +118,7 @@ pub fn part1(input: &str) -> impl ToString {
         .sorted_by_cached_key(|(k, _)| k.clone())
         .rev()
         .map(|(_, v)| v.unwrap())
-        .fold(0, |a, v| (a << 1) + if v { 1 } else { Default::default() })
+        .fold(0u64, |a, v| (a << 1) + if v { 1 } else { 0 })
 }
 
 fn validate(k: &String, i: &Instruction, cnxs: &HashMap<String, Instruction>) -> bool {
@@ -179,7 +179,7 @@ mod test {
         LazyLock::new(|| fs::read_to_string(util::input_path(YEAR, DAY)).unwrap());
 
     #[test]
-    #[ignore = "still debugging this one"]
+    // #[ignore = "still debugging this one"]
     fn test_part1() {
         assert!(check(YEAR, DAY, 1, &part1(&INPUT).to_string()).unwrap());
     }
