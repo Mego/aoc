@@ -4,23 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rustc-hash = { workspace = true }
-exhaust = { workspace = true }
-itertools = { workspace = true }
-rayon = { workspace = true }
-reqwest = { workspace = true }
-tokio = { workspace = true }
-phf = { version = "0.13.1", features = ["macros"] }
-regex-lite = "0.1.8"
-md5 = { workspace = true }
-fancy-regex = { workspace = true }
 atoi = "2.0.0"
+fancy-regex = "0.17.0"
 indexmap = "2.12.1"
-
-[[bench]]
-name = "benches"
-harness = false
-
-[dev-dependencies]
-criterion = "0.7.0"
-paste = "1.0.15"
+itertools = "0.14.0"
+md5 = "0.8.0"
+phf = { version = "0.13.1", features = ["macros"] }
+rayon = "1.11.0"
+regex-lite = "0.1.8"
+rustc-hash = "2.1.1"
+util = { path = "../util" }
