@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-grid = "1.0.0"
+grid = { workspace = true, default-features = true }
 highs = "2.0.0"
-itertools = "0.14.0"
-pathfinding = "4.14.0"
-petgraph = "0.8.3"
-rayon = "1.11.0"
-rustc-hash = "2.1.1"
+itertools = { workspace = true, default-features = true }
+pathfinding = { workspace = true, default-features = true }
+petgraph = { workspace = true, default-features = true }
+rayon = { workspace = true, default-features = true }
+rustc-hash = { workspace = true, default-features = true }
 util = { path = "../util" }

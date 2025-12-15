@@ -5,13 +5,13 @@ edition = "2024"
 
 [dependencies]
 cached = "0.56.0"
-exhaust = "0.2.4"
-grid = "1.0.0"
-itertools = "0.14.0"
-pathfinding = "4.14.0"
-peg = "0.8.5"
-petgraph = "0.8.3"
-rayon = "1.11.0"
+exhaust = { workspace = true, default-features = true }
+grid = { workspace = true, default-features = true }
+itertools = { workspace = true, default-features = true }
+pathfinding = { workspace = true, default-features = true }
+peg = { workspace = true, default-features = true }
+petgraph = { workspace = true, default-features = true }
+rayon = { workspace = true, default-features = true }
 regex = "1.12.2"
-rustc-hash = "2.1.1"
+rustc-hash = { workspace = true, default-features = true }
 util = { path = "../util" }

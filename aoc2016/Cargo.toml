@@ -5,12 +5,12 @@ edition = "2024"
 
 [dependencies]
 atoi = "2.0.0"
-fancy-regex = "0.17.0"
+fancy-regex = { workspace = true, default-features = true }
 indexmap = "2.12.1"
-itertools = "0.14.0"
-md5 = "0.8.0"
+itertools = { workspace = true, default-features = true }
+md5 = { workspace = true, default-features = true }
 phf = { version = "0.13.1", features = ["macros"] }
-rayon = "1.11.0"
+rayon = { workspace = true, default-features = true }
 regex-lite = "0.1.8"
-rustc-hash = "2.1.1"
+rustc-hash = { workspace = true, default-features = true }
 util = { path = "../util" }

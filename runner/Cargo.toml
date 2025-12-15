@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-tokio = { workspace = true }
+tokio = { workspace = true , default-features = true }
 paste = "1.0.15"
 util = { path = "../util" }
-clap = { version = "4.5.53", features = ["derive"] }
+clap = { features = ["derive"] , workspace = true, default-features = true }
 
 aoc2015 = { path = "../aoc2015" }
 

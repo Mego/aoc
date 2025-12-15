@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-exhaust = "0.2.4"
-grid = "1.0.0"
-itertools = "0.14.0"
-rayon = "1.11.0"
+exhaust = { workspace = true, default-features = true }
+grid = { workspace = true, default-features = true }
+itertools = { workspace = true, default-features = true }
+rayon = { workspace = true, default-features = true }
 reqwest = "0.12.24"
-rustc-hash = "2.1.1"
+rustc-hash = { workspace = true, default-features = true }
 strip-tags = "0.1.0"
-tokio = { workspace = true }
+tokio = { workspace = true , default-features = true }

@@ -5,12 +5,12 @@ edition = "2024"
 
 [dependencies]
 divisors_fixed = "0.4.0"
-exhaust = "0.2.4"
-fancy-regex = "0.17.0"
-itertools = "0.14.0"
-md5 = "0.8.0"
-peg = "0.8.5"
-rayon = "1.11.0"
-rustc-hash = "2.1.1"
+exhaust = { workspace = true, default-features = true }
+fancy-regex = { workspace = true, default-features = true }
+itertools = { workspace = true, default-features = true }
+md5 = { workspace = true, default-features = true }
+peg = { workspace = true, default-features = true }
+rayon = { workspace = true, default-features = true }
+rustc-hash = { workspace = true, default-features = true }
 serde_json = "1.0.145"
 util = { path = "../util" }
