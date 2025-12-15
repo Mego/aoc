@@ -11,4 +11,4 @@ rayon = { workspace = true, default-features = true }
 reqwest = "0.12.24"
 rustc-hash = { workspace = true, default-features = true }
 strip-tags = "0.1.0"
-tokio = { workspace = true , default-features = true }
+tokio = { workspace = true, default-features = true }

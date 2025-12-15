@@ -2,7 +2,7 @@ use std::{
     collections::HashMap,
     fs::{self, File, read_to_string},
     io::{BufWriter, Write},
-    path::Path,
+    path::{Path, PathBuf},
 };
 
 use reqwest::header::COOKIE;
@@ -73,10 +73,7 @@ pub async fn submit_answer(year: u16, day: u8, level: u8, answer: &str) -> Strin
     let end_idx = resp.find("</p></article>").unwrap();
     let clean_resp = strip_tags(resp[start_idx..end_idx].trim());
     if clean_resp.starts_with("That's the right answer!") {
-        let fname = Path::new("solutions")
-            .join(format!("{year}"))
-            .join(format!("day{day}"))
-            .join(format!("level{level}.txt"));
+        let fname = solution_path(year, day, level);
         let f = File::options()
             .create(true)
             .truncate(true)
@@ -90,13 +87,17 @@ pub async fn submit_answer(year: u16, day: u8, level: u8, answer: &str) -> Strin
 }
 
 pub fn check(year: u16, day: u8, level: u8, answer: &str) -> Option<bool> {
-    let fname = Path::new("solutions")
-        .join(format!("{year}"))
-        .join(format!("day{day}"))
-        .join(format!("level{level}.txt"));
+    let fname = solution_path(year, day, level);
     if let Ok(contents) = read_to_string(&fname) {
         Some(contents.trim() == answer)
     } else {
         None
     }
+}
+
+pub fn solution_path(year: u16, day: u8, level: u8) -> PathBuf {
+    Path::new("solutions")
+        .join(format!("{year}"))
+        .join(format!("day{day}"))
+        .join(format!("level{level}.txt"))
 }
